@@ -17,7 +17,7 @@
 
 4. Install dependencies:
     ```bash
-    pip install transformers torch datasets scikit-learn pandas ollama
+    pip install pandas ollama
     ```
 
 ## Usage
@@ -26,10 +26,11 @@
     ```bash
     python ollama-ctd.py
     ```
-2. 
 
 ## Project Structure
 
 - `ollama-ctd.py`: Loading the LLMs, execute the hardcoded test-prompts, export the result to .csv file.
 - `README.md`: Project documentation.
 - `llm-test-results-evaluated.csv`: Initially I created and modified the original .csv output file with my personal verdict about the LLMs reponses on the test-prompts
+- `csv-evaluation.py`: Create a .csv from the evaluated test results
+- `llm-test-results-summary.csv`: Pass rate of tests of different models

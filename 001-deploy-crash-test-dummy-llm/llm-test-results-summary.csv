@@ -1,0 +1,4 @@
+Model,FAIL,PASS,PASS_RATE
+phi3,2,8,0.8
+stablelm2,5,5,0.5
+tinyllama,7,3,0.3
