@@ -1,6 +1,6 @@
-# LLM Deployment
+# Testing LLMs
 
-## Setup
+## LLM Deployment
 
 1. Install Ollama from https://ollama.com/
 
@@ -9,28 +9,38 @@
     ollama pull phi3 tinyllama stablelm2
     ```
 
-3. Create and activate a virtual environment:
+## Usage
+
+1. Create and activate a virtual environment:
     ```bash
     python -m venv llm-env
     source llm-env/bin/activate  # On Windows, use `llm-env\Scripts\activate`
     ```
 
-4. Install dependencies:
+2. Install dependencies:
     ```bash
-    pip install pandas ollama
+    pip install pandas ollama nltk textstat textblob
     ```
 
-## Usage
+3. Install NLTK data:
+    ```bash
+    python
+    >>> import nltk
+    >>> nltk.download()
+    ```
+    Select All to download.
 
-1. Test the models:
+4. Test the models:
     ```bash
     python ollama-ctd.py
     ```
 
 ## Project Structure
 
-- `ollama-ctd.py`: Loading the LLMs, execute the hardcoded test-prompts, export the result to .csv file.
-- `README.md`: Project documentation.
-- `llm-test-results-evaluated.csv`: Initially I created and modified the original .csv output file with my personal verdict about the LLMs reponses on the test-prompts
-- `csv-evaluation.py`: Create a .csv from the evaluated test results
-- `llm-test-results-summary.csv`: Pass rate of tests of different models
+.
+├── ctd-llm-basic-eval/            # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict.
+├── ctd-llm-nltk-eval/             # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict and NLTK based statistical metrics
+├── llm_nltk_eval.py               # Response evaluation library based on text statistics
+├── ollama-ctd.py                  # Executing the the test
+├── LICENSE                        # License information
+└── README.md                      # This README file
