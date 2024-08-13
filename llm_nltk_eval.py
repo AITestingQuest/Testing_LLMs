@@ -52,12 +52,6 @@ def evaluate_llm_response(response, keywords=None):
     most_common_word, most_common_word_count = word_freq.most_common(1)[0] if word_freq else (None, 0)
     repetition_rate = most_common_word_count / word_count if word_count else 0
     
-    # Keyword/Topic Matching (Contextual Relevance)
-    # if keywords:
-    #    keyword_matches = sum(1 for word in words if word.lower() in keywords)
-    #    keyword_relevance = keyword_matches / word_count if word_count else 0
-    #else:
-    #    keyword_relevance = None
     
     # Compile all metrics into a dictionary
     metrics = {
@@ -74,14 +68,11 @@ def evaluate_llm_response(response, keywords=None):
         "content_word_ratio": content_word_ratio,
         "transition_word_ratio": transition_word_ratio,
         "repetition_rate": repetition_rate,
-        #"keyword_relevance": keyword_relevance,
     }
     
     return metrics
 
 # Example usage
-response = "The quick brown fox jumps over the lazy dog. It then runs away quickly."
-#keywords = ["fox", "dog", "runs"]
-
-metrics = evaluate_llm_response(response)#, keywords)
-print(metrics)
+#response = "The quick brown fox jumps over the lazy dog. It then runs away quickly."
+#metrics = evaluate_llm_response(response)
+#print(metrics)
