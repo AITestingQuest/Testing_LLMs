@@ -36,7 +36,7 @@
     ```
 
 ## Project Structure
-
+```bash
 .
 ├── ctd-llm-basic-eval/            # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict.
 ├── ctd-llm-nltk-eval/             # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict and NLTK based statistical metrics
@@ -44,3 +44,4 @@
 ├── ollama-ctd.py                  # Executing the the test
 ├── LICENSE                        # License information
 └── README.md                      # This README file
+```
