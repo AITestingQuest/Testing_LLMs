@@ -1,0 +1,4 @@
+LLM;PASS;FAIL
+phi3;5;5
+stablelm2;4;6
+tinyllama;3;7

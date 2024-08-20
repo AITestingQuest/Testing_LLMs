@@ -1,3 +1,6 @@
 # ignore ALL files in ANY directory named temp
 llm-env/
 __pycache__
+.pytest_cache/
+.deepeval-cache.json
+testresults.log
