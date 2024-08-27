@@ -23,22 +23,9 @@
     ```
 
 ## Usage of the initial test
-2. Test the models:
+1. Test the models:
     ```bash
     python ollama-ctd.py
-    ```
-
-1. Install NLTK data:
-    ```bash
-    python
-    >>> import nltk
-    >>> nltk.download()
-    ```
-    Select All to download.
-
-2. Test the models:
-    ```bash
-    python llm_nltk_eval.py
     ```
 
 ## Usage of NLTK
