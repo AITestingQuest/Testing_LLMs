@@ -1,6 +1,5 @@
 import ollama
 import pandas as pd
-from llm_nltk_eval import evaluate_llm_response
 
 llms = ["phi3","tinyllama", "stablelm2"]
 
@@ -35,31 +34,15 @@ results = []
 for llm in llms:
     for prompt in test_prompts:
         response = execute_prompt(llm, prompt)
-        metrics = evaluate_llm_response(response)
         response = response.strip("\r\n")
         results.append({
             'Model': llm,
             'Prompt': prompt,
-            'Response': response,
-            'Word Count': metrics["word_count"],
-            "Sentence Count": metrics["sentence_count"],
-            "Avg Sentence Length": metrics["avg_sentence_length"],
-            "Lexical Diversity": metrics["lexical_diversity"],
-            "Stopword Ratio": metrics["stopword_ratio"],
-            "Flesch Kincaid Grade": metrics["flesch_kincaid_grade"],
-            "Flesch Reading Ease": metrics["flesch_reading_ease"],
-            "Sentiment Polarity": metrics["sentiment_polarity"],
-            "Sentiment Subjectivity": metrics["sentiment_subjectivity"],
-            "Content Word Ratio": metrics["content_word_ratio"],
-            "Transition Word Ratio": metrics["transition_word_ratio"],
-            "Repetition Rate": metrics["repetition_rate"]
+            'Response': response
         })
 
 # Convert results to DataFrame
 results_df = pd.DataFrame(results)
-
-# Save results to a CSV file
-results_df.to_csv('llm_nltk_test_results.csv', index=False, sep="\t")
-
-# Display the DataFrame
 print(results_df)
+# Convert results to JSON
+results_df.to_json('results.json')

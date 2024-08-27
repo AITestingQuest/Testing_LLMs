@@ -19,7 +19,26 @@
 
 3. Install dependencies:
     ```bash
-    pip install pandas ollama nltk textstat textblob deepeval
+    pip install pandas ollama nltk textstat textblob deepeval evidently
+    ```
+
+## Usage of the initial test
+2. Test the models:
+    ```bash
+    python ollama-ctd.py
+    ```
+
+1. Install NLTK data:
+    ```bash
+    python
+    >>> import nltk
+    >>> nltk.download()
+    ```
+    Select All to download.
+
+2. Test the models:
+    ```bash
+    python llm_nltk_eval.py
     ```
 
 ## Usage of NLTK
@@ -34,7 +53,7 @@
 
 2. Test the models:
     ```bash
-    python ollama-ctd.py
+    python llm_nltk_eval.py
     ```
 
 ## Usage of DeepEval
@@ -46,16 +65,25 @@
     python llm_deepeval_eval.py
     ```
 
+## Usage of Evidenly AI
+
+1. Test the models:
+    ```bash
+    python llm_evidenlty_eval.py
+    ```
+
 ## Project Structure
 ```bash
 .
 ├── ctd-llm-basic-eval/            # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict.
 ├── ctd-llm-nltk-eval/             # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict and NLTK based statistical metrics
 ├── ctd-llm-deepeval-eval/         # Evaluated .csv files. Contains the prompts, the responses, and the PASS/FAIL verdict based on DeepEval
-├── llm_deepeval_eval.py           # Executing the the test based on DeepEval
-├── llm_nltk_eval.py               # Response evaluation library based on text statistics
+├── ctd-llm-evidently-eval/        # Evaluated .json and .html files. Contains the prompts, the responses. For the PASS/FAIL rate, execute test_eval.py
+├── llm_deepeval_eval.py           # Executing the test based on DeepEval
+├── llm_evidently_eval.py          # Executing the test based on Evidently AI
+├── llm_nltk_eval.py               # Executing the test based on NLTK
 ├── ollama_llm_responses.py        # Lightweight method for just executing a prompt from a given LLM
-├── ollama-ctd.py                  # Executing the the test
+├── ollama-ctd.py                  # Executing the initial test
 ├── LICENSE                        # License information
 └── README.md                      # This README file
 ```
