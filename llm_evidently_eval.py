@@ -67,21 +67,20 @@ text_evals_report = Report(metrics=[
                 )
 
 llms = ["phi3", "tinyllama", "stablelm2"]
-df_list = []
 
 for llm in llms:
     df = execute_all_prompts(llm)
     print(f"Prompts has been executed with {llm}")
-    json_filename = f"result_{llm}.json"
+    json_filename = f"result_evidently_{llm}.json"
     df.to_json(json_filename)
     print(f"Prompts and responses has been exported to {json_filename}")
     text_evals_report.run(reference_data=None,
                       current_data=df,
                       column_mapping=column_mapping)
     print(f"Evaluations has been executed for {llm}")
-    report_json_filename = f"report_{llm}.json"
+    report_json_filename = f"report_evidently_{llm}.json"
     text_evals_report.save_json(report_json_filename)
     print(f"Evaluation report has been exported to {report_json_filename}")
-    report_html_filename = f"report_{llm}.html"
+    report_html_filename = f"report_evidently_{llm}.html"
     text_evals_report.save_html(report_html_filename)
     print(f"Evaluation report has been exported to {report_html_filename}")

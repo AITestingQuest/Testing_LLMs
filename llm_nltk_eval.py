@@ -4,8 +4,9 @@ from nltk import pos_tag
 from nltk import FreqDist
 import textstat
 from textblob import TextBlob
-import ollama
+from ollama_llm_responses import execute_prompt
 import pandas as pd
+from tqdm import tqdm
 
 def evaluate_llm_response(response, keywords=None):
     # Tokenize words and sentences
@@ -89,22 +90,12 @@ test_prompts = [
     'What is the capital of Paris?',
 ]
 
-def execute_prompt(llm, prompt):
-    try:
-        print(llm)
-        print(prompt)
-        response = ollama.chat(model=llm, messages=[{'role': 'user', 'content': prompt},],)
-        print(response['message']['content'])
-        return response['message']['content']
-    except Exception as e:
-        return str(e)
-
 # Prepare to collect results
 results = []
 
 # Loop through each model and prompt
 for llm in llms:
-    for prompt in test_prompts:
+    for prompt in tqdm(test_prompts, desc=f"Processing Prompts for {llm}", unit="prompt"):
         response = execute_prompt(llm, prompt)
         metrics = evaluate_llm_response(response)
         response = response.strip("\r\n")
@@ -129,9 +120,7 @@ for llm in llms:
 # Convert results to DataFrame
 results_df = pd.DataFrame(results)
 
-# Save results to a CSV file
-results_df.to_csv('llm_nltk_test_results.csv', index=False, sep="\t")
-
-# Display the DataFrame
-print(results_df)
-
+print(f"Prompts has been executed with {llm}")
+json_filename = f"result_nltk_{llm}.json"
+results_df.to_json(json_filename)
+print(f"Prompts and responses has been exported to {json_filename}")

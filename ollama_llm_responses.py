@@ -1,5 +1,6 @@
 import ollama
 import pandas as pd
+from tqdm import tqdm
 
 test_prompts = [
     'Classify this sentence as positive, negative or neutral: "I am very disappointed with the service I received at the restaurant"',
@@ -23,7 +24,8 @@ def execute_prompt(llm, prompt):
     
 def execute_all_prompts(llm):
     results=[]
-    for prompt in test_prompts:
+    # Use tqdm to wrap the test_prompts loop for progress tracking
+    for prompt in tqdm(test_prompts, desc=f"Processing Prompts for {llm}", unit="prompt"):
         response = execute_prompt(llm, prompt)
         response = response.strip("\r\n")
         results.append({
